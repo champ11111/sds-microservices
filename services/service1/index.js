@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require("axios");
 const app = express();
 const port = 3000;
 
@@ -14,13 +15,15 @@ app.get("/*", async function (req, res) {
     if (req.url.split("/").length > 1) {
         const service = req.url.split("/")[1];
         const path = req.url.split("/").slice(2).join("/");
-        const result = await request({
-            uri: path,
-            baseUrl: `http://${service}:3000/`,
-            json: false,
-        });
+        try {
+            // Make a request to the specified service and path
+            const result = await axios.get(`http://${service}:3000/${path}`);
+            out += `\nResponse from ${service}: ${result.data}`;
+        } catch (error) {
+            out += `\nError contacting ${service}: ${error.message}`;
+        }
     }
-    res.status(200);
+    res.status(200).send(out);
 });
 
 app.listen(port, () => {
