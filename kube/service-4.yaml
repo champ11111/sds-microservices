@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-4
+  labels:
+    app: service-4
+spec:
+  selector:
+    matchLabels:
+      app: service-4
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-4
+    spec:
+      containers:
+        - name: service-4
+          image: champkub6/service4:v1.0.0
+          ports:
+            - containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+
+      # nodeSelector:
+      #   node-role.kubernetes.io/worker: worker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-4
+spec:
+  selector:
+    app: service-4
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
