@@ -1,26 +1,25 @@
 const express = require("express");
+const axios = require("axios");
 const app = express();
 const port = 3000;
 
-var os = require("os");
-var hostname = os.hostname();
+const os = require("os");
+const hostname = os.hostname();
 
 app.get("/", (req, res) => {
   res.send(`Hello World From Service4 from ${hostname}!`);
 });
 
 app.get("/*", async function (req, res) {
-  var out = `Hello World From Service1 from ${hostname}!`;
-  if (req.url.split("/").length > 1) {
-    const service = req.url.split("/")[1];
-    const path = req.url.split("/").slice(2).join("/");
-    const result = await request({
-      uri: path,
-      baseUrl: `http://${service}:3000/`,
-      json: false,
-    });
+  const path = req.url.split("/").slice(2).join("/");
+  const service = req.url.split("/")[1];
+
+  try {
+    const result = await axios.get(`http://${service}:3000/${path}`);
+    res.status(200).send(result.data);
+  } catch (error) {
+    res.status(500).send("Error forwarding request");
   }
-  res.status(200);
 });
 
 app.listen(port, () => {
