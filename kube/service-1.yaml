@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: service-1
-          image: champkub6/service1:v1.0.0
+          image: champkub6/service1:v2.0.0
           ports:
             - containerPort: 3000
           livenessProbe:
