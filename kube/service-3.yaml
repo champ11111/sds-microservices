@@ -26,8 +26,8 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 3
 
-      # nodeSelector:
-      #   node-role.kubernetes.io/worker: worker
+      nodeSelector:
+        node-role.kubernetes.io/worker: worker
 ---
 apiVersion: v1
 kind: Service
