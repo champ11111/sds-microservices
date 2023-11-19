@@ -36,12 +36,12 @@ push:
 	docker push $(username)/cinema-bookings:$(tag) 
 
 username-simple=champkub6
-tag=v2.0.0
+tag=v3.0.0
 build-simple:
-	docker build -t $(username-simple)/service1:$(tag) ./simple_microservices/service1
-	docker build -t $(username-simple)/service2:$(tag) ./simple_microservices/service2
-	docker build -t $(username-simple)/service3:$(tag) ./simple_microservices/service3
-	docker build -t $(username-simple)/service4:$(tag) ./simple_microservices/service4
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(username-simple)/service1:$(tag) ./simple_microservices/service1
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(username-simple)/service2:$(tag) ./simple_microservices/service2
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(username-simple)/service3:$(tag) ./simple_microservices/service3
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(username-simple)/service4:$(tag) ./simple_microservices/service4
 push-simple:
 	docker push $(username-simple)/service1:$(tag)
 	docker push $(username-simple)/service2:$(tag)
