@@ -46,21 +46,21 @@ data:
       location /health {
         return 200;
       }
-      location /service-1 {
-        rewrite ^/service-1/(.*) /$1 break;
-        proxy_pass http://service-1:3000;
+      location /mom {
+        rewrite ^/mom/(.*) /$1 break;
+        proxy_pass http://mom:3000;
       }
-      location /service-2 {
-        rewrite ^/service-2/(.*) /$1 break;
-        proxy_pass http://service-2:3000;
+      location /dad {
+        rewrite ^/dad/(.*) /$1 break;
+        proxy_pass http://dad:3000;
       }
-      location /service-3 {
-        rewrite ^/service-3/(.*) /$1 break;
-        proxy_pass http://service-3:3000;
+      location /son {
+        rewrite ^/son/(.*) /$1 break;
+        proxy_pass http://son:3000;
       }
-      location /service-4 {
-        rewrite ^/service-4/(.*) /$1 break;
-        proxy_pass http://service-4:3000;
+      location /gik {
+        rewrite ^/gik/(.*) /$1 break;
+        proxy_pass http://gik:3000;
       }
     }
 

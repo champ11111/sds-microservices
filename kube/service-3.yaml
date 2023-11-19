@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: service-3
-          image: champkub6/service3:v3.0.0
+          image: champkub6/service3:v4.0.0
           ports:
             - containerPort: 3000
           livenessProbe:
@@ -32,7 +32,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-3
+  name: son
 spec:
   selector:
     app: service-3
