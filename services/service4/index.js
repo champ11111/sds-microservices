@@ -10,7 +10,7 @@ const hostname = os.hostname();
 const serviceName = "gik"
 
 const dialogue = [
-    "ได้เลยจ้ะ คนสวยย เดี๋ยวเค้างล้างให้",
+    "ได้เลยจ้ะ คนสวยย เดี๋ยวเค้าล้างให้",
 ]
 
 const counterIncrement = (queryParams) => {

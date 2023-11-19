@@ -12,7 +12,8 @@ const serviceName = "mom"
 const dialogue = [
     "พ่อจ๋า ไปล้างจานให้หน่อยน้า",
     "พ่อ ไปล้างหน่อย",
-    "มึงไปล้าง"
+    "มึงไปล้าง",
+    "พี่สมศักดิ์ ผัวหนูไม่ยอมล้างจาน พี่ช่วยหน่อยนะคะ"
 ]
 
 const counterIncrement = (queryParams) => {

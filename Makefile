@@ -48,3 +48,7 @@ push-simple:
 	docker push $(username-simple)/service3:$(tag)
 	docker push $(username-simple)/service4:$(tag)
 
+build-simple2:
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(username-simple)/service1:v6.0.0 --push ./services/service1
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(username-simple)/service4:v6.0.0 --push ./services/service4
+

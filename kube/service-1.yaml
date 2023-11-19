@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: mom
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mom
-          image: champkub6/service1:v5.0.0
+          image: champkub6/service1:v6.0.0
           ports:
             - containerPort: 3000
           livenessProbe:
