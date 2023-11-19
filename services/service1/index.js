@@ -62,9 +62,9 @@ app.get("/*", async function (req, res) {
             const result = await axios.get(`http://${service}:3000/${path}`, {
                 params: req.query
             });
-            out += `\nResponse from ${service}: ${result.data}`;
+            out += `\n</br>${result.data}`;
         } catch (error) {
-            out += `\nError contacting ${service}: ${error.message}`;
+            out += `\n</br>Error contacting ${service}: ${error.message}`;
         }
     }
     res.status(200).send(out);

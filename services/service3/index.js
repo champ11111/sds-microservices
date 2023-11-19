@@ -48,28 +48,28 @@ app.get("/", (req, res) => {
 });
 
 app.get("/*", async function (req, res) {
-    let c = getDialogueNo(req.query)
-    req.query = counterIncrement(req.query)
-    console.log(req.query)
-    var out = `pod-${hostname}  > ${serviceName}: ${dialogue[c]}`;
-    const reqUrl = req.url.split("?")[0]
-    const queryParams = req.url.split("?")[1] // todo remove
-    if (reqUrl.split("/").length > 1) {
-        const service = reqUrl.split("/")[1];
-        const path = reqUrl.split("/").slice(2).join("/");
-        try {
-            // Make a request to the specified service and path
-            const result = await axios.get(`http://${service}:3000/${path}`, {
-                params: req.query
-            });
-            out += `\nResponse from ${service}: ${result.data}`;
-        } catch (error) {
-            out += `\nError contacting ${service}: ${error.message}`;
-        }
-    }
-    res.status(200).send(out);
+  let c = getDialogueNo(req.query)
+  req.query = counterIncrement(req.query)
+  console.log(req.query)
+  var out = `pod-${hostname}  > ${serviceName}: ${dialogue[c]}`;
+  const reqUrl = req.url.split("?")[0]
+  const queryParams = req.url.split("?")[1] // todo remove
+  if (reqUrl.split("/").length > 1) {
+      const service = reqUrl.split("/")[1];
+      const path = reqUrl.split("/").slice(2).join("/");
+      try {
+          // Make a request to the specified service and path
+          const result = await axios.get(`http://${service}:3000/${path}`, {
+              params: req.query
+          });
+          out += `\n</br>${result.data}`;
+      } catch (error) {
+          out += `\n</br>Error contacting ${service}: ${error.message}`;
+      }
+  }
+  res.status(200).send(out);
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+console.log(`Example app listening on port ${port}`);
 });

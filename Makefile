@@ -36,7 +36,7 @@ push:
 	docker push $(username)/cinema-bookings:$(tag) 
 
 username-simple=champkub6
-tag=v4.0.0
+tag=v5.0.0
 build-simple:
 	docker buildx build --platform linux/amd64,linux/arm64 -t $(username-simple)/service1:$(tag) --push ./services/service1
 	docker buildx build --platform linux/amd64,linux/arm64 -t $(username-simple)/service2:$(tag) --push ./services/service2
