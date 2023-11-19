@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-2
+  name: dad
   labels:
-    app: service-2
+    app: dad
 spec:
   selector:
     matchLabels:
-      app: service-2
+      app: dad
   replicas: 1
   template:
     metadata:
       labels:
-        app: service-2
+        app: dad
     spec:
       containers:
-        - name: service-2
+        - name: dad
           image: champkub6/service2:v4.0.0
           ports:
             - containerPort: 3000
@@ -35,7 +35,7 @@ metadata:
   name: dad
 spec:
   selector:
-    app: service-2
+    app: dad
   ports:
     - protocol: TCP
       port: 3000
